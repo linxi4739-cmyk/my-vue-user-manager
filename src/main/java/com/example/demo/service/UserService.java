@@ -8,6 +8,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
+    // 在 UserService 类中添加这个方法
+    public int addUser(String name) {
+        User user = new User();
+        user.setName(name);
+        return userMapper.insertUser(user);
+    }
+
     @Autowired // 让 Spring 自动把 UserMapper 的实现类注入进来
     private UserMapper userMapper;
 
@@ -15,4 +22,6 @@ public class UserService {
         // 这一步就是真正的数据库查询了
         return userMapper.findById(id);
     }
+
+
 }

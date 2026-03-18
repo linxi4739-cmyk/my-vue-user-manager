@@ -16,4 +16,17 @@ public class UserController {
     public User sayHello(@RequestParam Integer id) {
         return userService.findUserById(id);
     }
+
+    // 访问地址：http://localhost:8080/test/add?name=张三
+    @GetMapping("/add")
+    public String addUser(@RequestParam String name) {
+        int result = userService.addUser(name);
+        if (result > 0) {
+            return "用户 " + name + " 添加成功！";
+        } else {
+            return "添加失败，请检查数据库连接。";
+        }
+    }
+
+
 }
